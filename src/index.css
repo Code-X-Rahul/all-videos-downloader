@@ -1,0 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(240deg, rgba(8,212,150,1) 0%, rgba(45,120,136,1) 35%, rgba(29,83,193,1) 61%, rgba(49,13,144,1) 100%); 
+  min-height: 100vh;
+  min-height: 100dvh;
+}
