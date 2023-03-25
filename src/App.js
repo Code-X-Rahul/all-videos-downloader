@@ -32,15 +32,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Youtube />} />
-        <Route path="/instagram-downloader" element={<Instagram />} />
+        <Route path="https://code-x-rahul.github.io/all-videos-downloader/" element={<Youtube />} />
+        <Route path="https://code-x-rahul.github.io/all-videos-downloader/instagram-downloader" element={<Instagram />} />
       </Routes>
       <div class="links">
         <button className="pages-links">
-          <Link to="/">Videos Downloader</Link>
+          <Link to="https://code-x-rahul.github.io/all-videos-downloader/">Videos Downloader</Link>
         </button>
         <button className="pages-links">
-          <Link to="/instagram-downloader">Reels Downloader</Link>
+          <Link to="https://code-x-rahul.github.io/all-videos-downloader/instagram-downloader">Reels Downloader</Link>
         </button>
       </div>
       <Video videoInfo={videoInfo} />

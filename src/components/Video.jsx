@@ -5,7 +5,7 @@ const Video = ({ videoInfo }) => {
     const [videoTitle, setVideoTitle] = useState();
     const [videoThumbnail, setVideoThumbnail] = useState();
     useEffect(() => {
-        if (window.location.href === "http://localhost:3000/instagram-downloader") {
+        if (window.location.href === "https://code-x-rahul.github.io/all-videos-downloader/instagram-downloader") {
             setVideoThumbnail(videoInfo?.thumb)
             setVideoTitle(videoInfo?.meta.title)
         } else {

@@ -7,7 +7,7 @@ const Options = ({ videoInfo, setDownloadLinkNo }) => {
 
     const qualities = videoInfo?.formats;
     const quality = qualities?.map(format => {
-        if (window.location.href === "http://localhost:3000/") {
+        if (window.location.href === "https://code-x-rahul.github.io/all-videos-downloader/") {
             return <option
                 key={Math.random() * 1000}
                 value={qualities.indexOf(format)}

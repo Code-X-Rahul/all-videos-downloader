@@ -6,7 +6,7 @@ const Form = ({ getVideo, videoLink, setVideoLink, videoInfo, setDownloadLinkNo,
     const [downloadLink, setDownloadLink] = useState();
 
     useEffect(() => {
-        if (window.location.href === "http://localhost:3000/instagram-downloader") {
+        if (window.location.href === "https://code-x-rahul.github.io/all-videos-downloader/instagram-downloader") {
             setDownloadLink(videoInfo?.url[0].url)
         } else {
            setDownloadLink(videoInfo?.formats[downloadLinkNo].url)
@@ -25,7 +25,7 @@ const Form = ({ getVideo, videoLink, setVideoLink, videoInfo, setDownloadLinkNo,
             />}
             {!videoInfo && <button type='submit'>Get Video</button>}
 
-            {videoInfo && window.location.href === "http://localhost:3000/" && <Options videoInfo={videoInfo} setDownloadLinkNo={setDownloadLinkNo} />}
+            {videoInfo && window.location.href === "https://code-x-rahul.github.io/all-videos-downloader/" && <Options videoInfo={videoInfo} setDownloadLinkNo={setDownloadLinkNo} />}
 
             {videoInfo && <button>
                 <a href={downloadLink} target="_blank">Download Video</a>
