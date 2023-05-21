@@ -1,58 +1,81 @@
 import "./App.css";
 import Youtube from "./components/Youtube";
-import Form from "./components/Form";
-import Video from "./components/Video";
 import Instagram from "./components/Instagram";
-import { useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Routes, Link } from "react-router-dom";
+import loading from "./assets/loading.webp";
 
 function App() {
-  const [videoLink, setVideoLink] = useState("");
-  const [downloadLinkNo, setDownloadLinkNo] = useState(0);
-  const [videoInfo, setVideoInfo] = useState();
+  const [videoLink, setVideoLink] = useState();
+  const [spinner, setSpinner] = useState(false);
 
-  const getVideo = (e) => {
-    e.preventDefault();
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "e2d5258e3fmshc8dcafb3bbf094cp1649a3jsne5b09457ce1f",
-        "X-RapidAPI-Host": "aiov-download-youtube-videos.p.rapidapi.com",
-      },
-    };
-
-    fetch(
-      `https://aiov-download-youtube-videos.p.rapidapi.com/GetVideoDetails?URL=${videoLink}`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setVideoInfo(response))
-      .catch((err) => console.error(err));
-  };
   return (
-    <>
-      <Routes>
-        <Route path="https://code-x-rahul.github.io/all-videos-downloader/" element={<Youtube />} />
-        <Route path="https://code-x-rahul.github.io/all-videos-downloader/instagram-downloader" element={<Instagram />} />
-      </Routes>
-      <div class="links">
+    <main>
+      {spinner && (
+        <div className="loading flex">
+          <img src={loading} alt="loading..." />
+        </div>
+      )}
+      <div className="links">
         <button className="pages-links">
-          <Link to="https://code-x-rahul.github.io/all-videos-downloader/">Videos Downloader</Link>
+          <Link to="/">Videos Downloader</Link>
         </button>
         <button className="pages-links">
-          <Link to="https://code-x-rahul.github.io/all-videos-downloader/instagram-downloader">Reels Downloader</Link>
+          <Link to="/instagram-downloader">Reels Downloader</Link>
         </button>
       </div>
-      <Video videoInfo={videoInfo} />
-      <Form
-        getVideo={getVideo}
-        videoLink={videoLink}
-        downloadLinkNo={downloadLinkNo}
-        setVideoLink={setVideoLink}
-        setDownloadLinkNo={setDownloadLinkNo}
-        videoInfo={videoInfo}
-      />
-    </>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Youtube
+              setSpinner={setSpinner}
+              setVideoLink={setVideoLink}
+              videoLink={videoLink}
+            />
+          }
+        />
+        <Route
+          path="/instagram-downloader"
+          element={
+            <Instagram
+              setSpinner={setSpinner}
+              setVideoLink={setVideoLink}
+              videoLink={videoLink}
+            />
+          }
+        />
+      </Routes>
+      <div className="social--links">
+        <button className="pages-links">
+          <a
+            href="https://instagram.com/r_.a._h_.u._l?igshid=ZDdkNTZiNTM="
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a>
+        </button>
+        <button className="pages-links">
+          <a
+            href="https://www.linkedin.com/in/rahul-rajput-655705202"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a>
+        </button>
+        <button className="pages-links">
+          <a
+            href="https://youtube.com/@CODE-X-RAHUL"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ion-icon name="logo-youtube"></ion-icon>
+          </a>
+        </button>
+      </div>
+    </main>
   );
 }
 

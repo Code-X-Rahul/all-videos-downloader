@@ -1,35 +1,31 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Options from './options'
-import { useEffect, useState } from 'react';
 
-const Form = ({ getVideo, videoLink, setVideoLink, videoInfo, setDownloadLinkNo, downloadLinkNo }) => {
-    const [downloadLink, setDownloadLink] = useState();
+const Form = ({ videoInfoMp3, videoInfo, getYouTubeVideoId , setinstaVideoLink , instaVideoInfo}) => {
+    let searchRef = useRef()
 
-    useEffect(() => {
-        if (window.location.href === "https://code-x-rahul.github.io/all-videos-downloader/instagram-downloader") {
-            setDownloadLink(videoInfo?.url[0].url)
-        } else {
-           setDownloadLink(videoInfo?.formats[downloadLinkNo].url)
-        }
-    }, [videoInfo])
     const videoLinkHandler = (e) => {
-        setVideoLink(e.target.value)
+        e.preventDefault()
+        let videoUrl = searchRef.current.value
+        if(getYouTubeVideoId){
+            getYouTubeVideoId(videoUrl)
+        } else{
+            setinstaVideoLink(videoUrl)
+        }
+        
     }
     return (
-        <form onSubmit={getVideo} className="flex">
-            {!videoInfo && <input
+        <form onSubmit={videoLinkHandler} className="flex">
+            {!videoInfo && !instaVideoInfo && <input
                 placeholder='Paste Video link here'
                 type="text"
-                value={videoLink}
-                onChange={videoLinkHandler}
+                ref={searchRef}
             />}
-            {!videoInfo && <button type='submit'>Get Video</button>}
+            {!videoInfo && !instaVideoInfo && <button type='submit'>Get Video</button>}
 
-            {videoInfo && window.location.href === "https://code-x-rahul.github.io/all-videos-downloader/" && <Options videoInfo={videoInfo} setDownloadLinkNo={setDownloadLinkNo} />}
+            {videoInfo && !instaVideoInfo && <Options videoInfoMp3={videoInfoMp3} videoInfo={videoInfo} />}
 
-            {videoInfo && <button>
-                <a href={downloadLink} target="_blank">Download Video</a>
-            </button>}
+            {instaVideoInfo && <a className='insta-Download' href={instaVideoInfo.url[0].url} target = "_blank" rel='noreferrer'>Download Now</a>}
         </form>
     )
 }

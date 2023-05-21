@@ -1,21 +1,25 @@
-.flex{
+.flex {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-header{
+header {
   height: 10vh;
 }
-h1{
+h1 {
   color: rgb(235, 235, 65);
-  text-shadow: 2px 2px 10px yellow;
+  text-shadow: 2px 2px 10px rgb(241, 241, 36);
   text-align: center;
+  margin-top: 1rem;
 }
-form{
+.insta-h1{
+  font-size: 2rem;
+}
+form {
   flex-direction: column;
   margin: 2rem auto;
 }
-form > input{
+form > input {
   margin: 1rem 0;
   height: 3rem;
   min-width: 350px;
@@ -25,8 +29,8 @@ form > input{
   border-radius: 30px;
   padding: 0 1rem;
 }
-form > button{
-  padding: .8rem 1.5rem;
+form > button {
+  padding: 0.8rem 1.5rem;
   font-size: 1.2rem;
   border: 1px solid grey;
   border-radius: 30px;
@@ -34,53 +38,82 @@ form > button{
   margin: 1rem 0;
   background-color: #f1f6f8;
 }
-a{
+a {
   color: black;
   text-decoration: none;
 }
-.card{
+.card {
   flex-direction: column;
 }
-.image--container{
-  max-width: 400px;
+.image--container {
+  margin-top: 1rem;
+  max-width: 450px;
 }
-img{
+.image--container>img{
+  border-radius: 20px;
+  box-shadow:  0px 1px 5px rgb(192, 192, 192);
+}
+img {
   max-width: 100%;
 }
-.title--container{
+
+.title--container {
   margin-top: 1rem;
   padding-inline: 2.5rem;
   font-size: 1.5rem;
   color: whitesmoke;
   text-align: center;
 }
-.select > select{
-  font-size: 1rem;
-  padding: 0.5rem;
-  outline: none;
-  border: none;
-  border-radius: 30px;
-}
-.select > select > option{
-  border-radius: 30px;
-  padding: 0.5rem 0;
-}
-.links{
+.links {
   display: flex;
   justify-content: space-between;
-  max-width: 700px;
-  margin-top: 1rem;
+  margin-inline: auto;
   background: rgba(248, 248, 248, 0.671);
+  box-shadow: 0px 5px 10px rgba(248, 248, 248, 0.671);
 }
-.pages-links{
+@media screen and (min-width:900px) {
+  .pages-links{
+    margin-inline: 2rem;
+  }
+}
+.pages-links {
   font-size: 1.3rem;
   border: none;
   background: none;
-  /* border-radius: 50px; */
   padding: 0.7rem 0.5rem;
-  /* margin: 0.5rem; */
 }
-.pages-links > a{
+.pages-links > a {
   color: rgb(5, 63, 223);
+  text-shadow: 0px 4px 10px rgb(208, 208, 221);
   line-height: 1.5;
+}
+.all-links,
+.insta-Download{
+  background-color: rgb(212, 212, 208);
+  border-radius: 20px;
+  color: rgb(24, 23, 23);
+  box-shadow: 0px 5px 20px rgb(192, 192, 192);
+}
+.all-links>p{
+  margin: 1rem;
+  text-shadow: 0px 5px 10px rgb(255, 255, 123);
+}
+.all-links a{
+  padding: 1rem;
+  text-decoration: none;
+  color: rgb(248, 36, 36);
+}
+.loading{
+  position: absolute;
+  inset: 0;
+  background-color: #f2f2dc;
+  z-index: 200;
+}
+.loading > img{
+  width: 100%;
+}
+.insta-Download{
+  text-decoration: none;
+  padding: 1em;
+  border-radius: 30px;
 }

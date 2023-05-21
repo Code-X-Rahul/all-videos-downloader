@@ -1,31 +1,25 @@
-import React from 'react'
 
-const Options = ({ videoInfo, setDownloadLinkNo }) => {
-    const setLink = (e) => {
-        setDownloadLinkNo(e.target.value)
-    }
+const Options = ({ videoInfo, videoInfoMp3 }) => {
 
-    const qualities = videoInfo?.formats;
-    const quality = qualities?.map(format => {
-        if (window.location.href === "https://code-x-rahul.github.io/all-videos-downloader/") {
-            return <option
-                key={Math.random() * 1000}
-                value={qualities.indexOf(format)}
-            >
-                {format?.resolution} ({format?.format_note}) ({format?.filesize && Math.ceil(format.filesize / 1048576) + " Mb"})
-            </option>
-        }else{
-            return
-        }
+  let quality;
+  let qualities = Object.values(videoInfo?.link);
+  console.log(qualities)
+  quality = qualities?.map(format => {
+    if (format[2] !== "adaptive") {
+      return <p key={Math.random() * 1000}> {format[3]}<span><a href={format[0]} target="_blank" rel="noreferrer">Download Now</a></span></p>
+    } else {
+      return ""
     }
-    )
-    return (
-        <div className="select">
-            <select name="todos" onChange={setLink} >
-                {quality}
-            </select>
-        </div>
-    )
+  })
+
+
+  return (
+    <div className='all-links'>
+      {videoInfoMp3 && videoInfoMp3.status === "ok" && <p>Mp3<span><a href={videoInfoMp3.link} target="_blank" rel="noreferrer">Download Now</a></span></p>}
+      {quality}
+    </div>
+  )
 }
 
 export default Options
+
