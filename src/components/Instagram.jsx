@@ -13,7 +13,7 @@ const Instagram = ({ setVideoLink, setSpinner, videoLink }) => {
             const options = {
                 method: "GET",
                 headers: {
-                    "X-RapidAPI-Key": "e2d5258e3fmshc8dcafb3bbf094cp1649a3jsne5b09457ce1f",
+                    "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
                     "X-RapidAPI-Host": "aiov-download-youtube-videos.p.rapidapi.com",
                 },
             };

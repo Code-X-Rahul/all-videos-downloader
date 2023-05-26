@@ -15,7 +15,7 @@ const Youtube = ({ setVideoLink, setSpinner, videoLink }) => {
         method: "GET",
         headers: {
           "X-RapidAPI-Key":
-            "e2d5258e3fmshc8dcafb3bbf094cp1649a3jsne5b09457ce1f",
+            process.env.REACT_APP_YTAPI_KEY,
           "X-RapidAPI-Host": "youtube-mp3-download1.p.rapidapi.com",
         },
       };
@@ -41,7 +41,7 @@ const Youtube = ({ setVideoLink, setSpinner, videoLink }) => {
         method: "GET",
         headers: {
           "X-RapidAPI-Key":
-            "e2d5258e3fmshc8dcafb3bbf094cp1649a3jsne5b09457ce1f",
+            process.env.REACT_APP_MP3API_KEY,
           "X-RapidAPI-Host": "youtube-video-download-info.p.rapidapi.com",
         },
       };
