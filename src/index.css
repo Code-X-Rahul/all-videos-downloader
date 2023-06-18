@@ -21,17 +21,20 @@ body {
 }
 
 .social--links {
+  max-width: 200px;
   position: absolute;
   bottom: 0;
   right: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: auto;
-  background-color: aliceblue;
+  background-color: whitesmoke;
+  border-radius: 0.5rem 0 0 0;
 }
-.social--links {
-  padding-inline: 1rem;
-}
-.social--links > button > a {
+.social--links  > a {
   color: red;
+  margin-inline: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  font-size: large;
 }

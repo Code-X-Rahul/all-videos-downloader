@@ -1,4 +1,4 @@
-.flex {
+.flex_flex {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,6 +64,21 @@ img {
   color: whitesmoke;
   text-align: center;
 }
+.outer-div{
+  max-width: 600px;
+  margin-inline: auto;
+  padding-block: 20px;
+}
+.options{
+  margin-block: 1rem;
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 300px;
+  margin-inline: auto;
+}
 .links {
   display: flex;
   justify-content: space-between;
@@ -108,6 +123,9 @@ img {
   inset: 0;
   background-color: #f2f2dc;
   z-index: 200;
+  width: 15rem;
+  height: 15rem;
+  margin: auto;
 }
 .loading > img{
   width: 100%;
@@ -116,4 +134,13 @@ img {
   text-decoration: none;
   padding: 1em;
   border-radius: 30px;
+}
+
+.max{
+  max-width: 900px;
+  margin: 0 auto;
+}
+.relative{
+  min-height: 100vh;
+  position: relative;
 }

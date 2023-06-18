@@ -1,22 +1,18 @@
 import "./App.css";
 import Youtube from "./components/Youtube";
 import Instagram from "./components/Instagram";
-import React, { useState } from "react";
 import { Route, Routes, Link } from "react-router-dom";
-import loading from "./assets/loading.webp";
+// import loading from "./assets/loading.webp";
+import Footer from "./components/Footer";
+import YoutubePage from "./pages/YoutubePage";
+import InstagramPage from "./pages/InstagramPage";
+import { useState } from "react";
 
 function App() {
-  const [videoLink, setVideoLink] = useState();
-  const [spinner, setSpinner] = useState(false);
-
+  const [instaUrl, setInstaUrl] = useState('')
   return (
-    <main>
-      {spinner && (
-        <div className="loading flex">
-          <img src={loading} alt="loading..." />
-        </div>
-      )}
-      <div className="links">
+    <main className="max relative">
+      <div className="links max">
         <button className="pages-links">
           <Link to="/">Videos Downloader</Link>
         </button>
@@ -25,56 +21,12 @@ function App() {
         </button>
       </div>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Youtube
-              setSpinner={setSpinner}
-              setVideoLink={setVideoLink}
-              videoLink={videoLink}
-            />
-          }
-        />
-        <Route
-          path="/instagram-downloader"
-          element={
-            <Instagram
-              setSpinner={setSpinner}
-              setVideoLink={setVideoLink}
-              videoLink={videoLink}
-            />
-          }
-        />
+        <Route path="/" element={<Youtube />} />
+        <Route path="/instagram-downloader" element={<Instagram setInstaUrl={setInstaUrl}/>} />
+        <Route path="/youtube/:videoId" element={<YoutubePage />} />
+        <Route path="/instagram/:url" element={<InstagramPage instaUrl={instaUrl} />} />
       </Routes>
-      <div className="social--links">
-        <button className="pages-links">
-          <a
-            href="https://instagram.com/r_.a._h_.u._l?igshid=ZDdkNTZiNTM="
-            target="_blank"
-            rel="noreferrer"
-          >
-            <ion-icon name="logo-instagram"></ion-icon>
-          </a>
-        </button>
-        <button className="pages-links">
-          <a
-            href="https://www.linkedin.com/in/rahul-rajput-655705202"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <ion-icon name="logo-linkedin"></ion-icon>
-          </a>
-        </button>
-        <button className="pages-links">
-          <a
-            href="https://youtube.com/@CODE-X-RAHUL"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <ion-icon name="logo-youtube"></ion-icon>
-          </a>
-        </button>
-      </div>
+      <Footer />
     </main>
   );
 }
